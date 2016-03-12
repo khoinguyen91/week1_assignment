@@ -1,0 +1,45 @@
+<h1>Khoi's Restaurant Menu</h1>
+<div class="btn-group" role="group" aria-label="Basic example">
+  <div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sort
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <a class="dropdown-item" href="menu?sort_a_z=0"> Name A-Z</a>
+    <a class="dropdown-item" href="menu?sort_z_a=0"> Name Z-A</a>
+    <a class="dropdown-item" href="menu?low_high=0"> Price Low->High</a>
+    <a class="dropdown-item" href="#high_low=0"> Price High->Low</a>
+    <a class="dropdown-item" href="#"> Most viewed</a>
+  </div>
+</div>
+	<% @sections.each do |section| %>
+	<%= link_to section, menu_path(section:section),class: 'btn btn-primary' %>
+	<% end %>
+</div>
+<% @food_items.in_groups_of(3) do |group| %>
+	<div class ="row">
+		<% group.compact.each do |food_item| %>
+		<div class = "col-sm-4">
+		
+			<div class="card">
+ 				<%= image_tag food_item.img_url_or_default , alt: food_item.name %> 
+
+  			<div class="card-block">
+    			<b><h4 class="card-title"><%= food_item.name%></b>
+    				<b><h6>Total Ordered:</h6><b>
+    				<span class="label label-default"><%= food_item.orders.count %></span>
+    			</h4>
+    			<p class="card-text"><%= food_item.description%>.</p>
+  			</div>
+  <div class="card-block">
+    <a href= food_items/<%= food_item.id%>/orders/new , class="card-link btn btn-warning">Order</a>
+    <a href= food_items/<%= food_item.id%> , class="card-link btn btn-primary">Details</a>
+
+  </div>
+
+
+</div>
+</div>
+	<% end %>
+</div>
+<% end %>
