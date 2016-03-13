@@ -1,4 +1,4 @@
-class FoodItem < ActiveRecord::Base
+	class FoodItem < ActiveRecord::Base
 		has_many :orders, dependent: :destroy
 	validates :name, presence: true,
                     length: { minimum: 5 }
