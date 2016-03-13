@@ -1,10 +1,10 @@
 Coder Restaurant is a Ruby on Rails restaurant website let users order foods.
 
-Submitted by: Your Name
+Submitted by: KhoiNguyen
 
-Time spent: XX hours spent in total
+Time spent: 25 hours spent in total
 
-URL: heroku-app-url
+URL: http://khoi-week1.herokuapp.com/
 
 User Stories
 
@@ -62,7 +62,7 @@ Describe any challenges encountered while building the app.
 
 License
 
-Copyright [yyyy] [name]
+Copyright [2016] [KhoiNguyen]
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
