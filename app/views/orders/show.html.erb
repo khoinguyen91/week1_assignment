@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @order.name %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @order.phone_number %>
+</p>
+
+<p>
+  <strong>Adress:</strong>
+  <%= @order.address %>
+</p>
+
+<p>
+  <strong>Total cost :</strong>
+  20000 + <%= @order.food_item.price  %>
+</p>
+
+<%= link_to 'Back', food_items_path %>

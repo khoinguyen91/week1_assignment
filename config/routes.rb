@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get 'contact_us' => 'welcome#contact_us'
   get 'menu' => 'menu#index'
   get 'food_items' => 'welcome#food_items'
+  # get 'orders/:id/show' => 'orders#show', as: :order_show
+  # get 'order_show' => 'orders#show'
   get 'cuisines/:cuisine', to: 'food_items#index', as: :cuisine
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

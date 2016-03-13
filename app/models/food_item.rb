@@ -2,9 +2,9 @@ class FoodItem < ActiveRecord::Base
 		has_many :orders, dependent: :destroy
 	validates :name, presence: true,
                     length: { minimum: 5 }
-  # attr_accessible :name,  :cuisine_list
-  # acts_as_taggable
-  # is_impressionable
+   # attr_accessible :cuisine
+   # acts_as_taggable
+  is_impressionable
   # for index
     # Cuisine:
     #      <% food_item.cuisines.any? %>
@@ -26,4 +26,8 @@ class FoodItem < ActiveRecord::Base
 	# def self.sortaz(name)
 	# 	order('name DESC')
 	# end
+	def self.search(query)
+    # where(:title, query) -> This would return an exact match of the query
+    where("name LIKE ? ", "%#{query}%")
+  end
 end

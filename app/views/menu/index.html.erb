@@ -5,13 +5,22 @@
     Sort
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <a class="dropdown-item" href="menu?sort_a_z=0"> Name A-Z</a>
-    <a class="dropdown-item" href="menu?sort_z_a=0"> Name Z-A</a>
-    <a class="dropdown-item" href="menu?low_high=0"> Price Low->High</a>
-    <a class="dropdown-item" href="#high_low=0"> Price High->Low</a>
-    <a class="dropdown-item" href="#"> Most viewed</a>
+    <a class="dropdown-item" href="menu?sort=name&order=asc"> Name A-Z</a>
+    <a class="dropdown-item" href="menu?sort=name&order=desc"> Name Z-A</a>
+    <a class="dropdown-item" href="menu?sort=price&order=asc"> Price Low->High</a>
+    <a class="dropdown-item" href="menu?sort=price&order=desc"> Price High->Low</a>
+    <a class="dropdown-item" href="menu?sort=count_view&order=desc"> Most viewed</a>
   </div>
 </div>
+
+<%= form_tag(menu_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Food name" %>
+ <button class="btn btn-success-outline" type="submit">Search</button>
+ <% if @food_items.blank? %>
+  <h6>There are no food item containing the term <%= params[:search] %>.</h6>
+<% end %>
+<% end %>
+
 	<% @sections.each do |section| %>
 	<%= link_to section, menu_path(section:section),class: 'btn btn-primary' %>
 	<% end %>
@@ -22,7 +31,7 @@
 		<div class = "col-sm-4">
 		
 			<div class="card">
- 				<%= image_tag food_item.img_url_or_default , alt: food_item.name %> 
+ 				<%= image_tag food_item.img_url_or_default , alt: food_item.name , class: "image_food" %> 
 
   			<div class="card-block">
     			<b><h4 class="card-title"><%= food_item.name%></b>
@@ -33,11 +42,9 @@
   			</div>
   <div class="card-block">
     <a href= food_items/<%= food_item.id%>/orders/new , class="card-link btn btn-warning">Order</a>
-    <a href= food_items/<%= food_item.id%> , class="card-link btn btn-primary">Details</a>
-
+    <a href= food_items/<%= food_item.id%> , class="card-link btn btn-primary">Details</a><br></br>
+    Total viewed: <%= food_item.count_view %>
   </div>
-
-
 </div>
 </div>
 	<% end %>

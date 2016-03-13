@@ -10,20 +10,15 @@ class MenuController < ApplicationController
     if params[:search]
       @food_items = FoodItem.search(params[:search])
     end
-    if params[:sort_a_z]
-      @food_items = FoodItem.order(name: :asc)
+    if params[:sort] == "name"
+      @food_items = FoodItem.order(name: params[:order])
     end
-    if params[:sort_z_a]
-      @food_items = FoodItem.order(name: :desc)
+    if params[:sort] == "price"
+      @food_items = FoodItem.order(price: params[:order])
     end
-    if params[:high_low]
-      @food_items = FoodItem.order(price: :desc)
-    end
-    if params[:low_high]
-      @food_items = FoodItem.order(price: :asc)
-    end
-    if params[:most_viewed]
-      @food_items = FoodItem.order(count_view: :desc)
+
+    if params[:sort] == "count_view"
+      @food_items = FoodItem.order(count_view: params[:order])
     end
   end
 end

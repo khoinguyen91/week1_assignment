@@ -1,27 +1,24 @@
 class FoodItemsController < ApplicationController
   before_action :set_food_item, only: [:show, :edit, :update, :destroy]
-
+  impressionist actions: [:show]
+  # impressionist
   # GET /food_items
   # GET /food_items.json
   def index
     @food_items = FoodItem.all
     if params[:cuisine]
       @food_items = FoodItem.tagged_with(params[:cuisine])
-   
+    end
+    if params[:search]
+      @food_items = FoodItem.search(params[:search])
+    #@articles = Article.where(["title || body like ?","%#{params[:search]}%"])
     end
   end
 
   # GET /food_items/1
   # GET /food_items/1.json
   def show
-     if @food_items
-            count = food_item.count_view
-            if !count
-                count = 1
-            end
-
-            food_item.update_attribute(:count_view, count + 1)
-        end
+    @food_item.increment!(:count_view)
   end
 
   # GET /food_items/new
