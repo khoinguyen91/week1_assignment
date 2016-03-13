@@ -41,8 +41,8 @@
     			<p class="card-text"><%= food_item.description%>.</p>
   			</div>
   <div class="card-block">
-    <a link to new_food_item_order_path , class="card-link btn btn-warning">Order</a>
-    <a link to food_item_path , class="card-link btn btn-primary">Details></a><br></br>
+    <a href= food_items/<%= food_item.id%>/orders/new , class="card-link btn btn-warning">Order</a>
+    <a href= food_items/<%= food_item.id%> , class="card-link btn btn-primary">Details</a><br></br>
     Total viewed: <%= food_item.count_view %>
   </div>
 </div>

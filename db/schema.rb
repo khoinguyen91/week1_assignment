@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 20160313032014) do
     t.decimal  "price"
     t.string   "section"
     t.string   "img_url"
-    t.integer  "count_view"
+    t.integer  "count_view",  default: 0
     t.string   "cuisine"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "impressions", force: :cascade do |t|
