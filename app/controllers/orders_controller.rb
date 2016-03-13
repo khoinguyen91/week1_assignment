@@ -8,7 +8,6 @@ class OrdersController < ApplicationController
 
 		@order = Order.new(order_params)
 		@order.food_item = @food_item
-
 		if @order.save
 			flash[:success] = "Order submitted. Thanks for Using Khoi's Restaurant service"
 			redirect_to order_path(@order)

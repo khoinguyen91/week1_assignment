@@ -4,7 +4,7 @@ class FoodItem < ActiveRecord::Base
                     length: { minimum: 5 }
    # attr_accessible :cuisine
    # acts_as_taggable
-  is_impressionable
+  # is_impressionable
   # for index
     # Cuisine:
     #      <% food_item.cuisines.any? %>
